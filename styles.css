@@ -5493,7 +5493,7 @@ button.nav-dropdown-trigger {
   }
 
   .modal-hero-badge {
-    font-size: 0.65rem;
+    display: none !important;
   }
 
   .modal-hero-direct-btn {
@@ -6717,13 +6717,30 @@ button.nav-dropdown-trigger {
   }
 
   .case-modal-backdrop {
-    padding: max(0.5rem, env(safe-area-inset-top)) max(0.35rem, env(safe-area-inset-right)) max(0.5rem, env(safe-area-inset-bottom)) max(0.35rem, env(safe-area-inset-left));
+    padding: max(1.5rem, env(safe-area-inset-top) + 0.8rem) max(1rem, env(safe-area-inset-right)) max(1.5rem, env(safe-area-inset-bottom) + 0.8rem) max(1rem, env(safe-area-inset-left)) !important;
+    background: rgba(0, 0, 0, 0.88) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
   }
 
   .case-modal-card {
-    max-height: 94dvh;
-    border-radius: 20px;
+    width: 100% !important;
+    max-width: min(520px, calc(100vw - 2rem)) !important;
+    max-height: min(86dvh, 86vh) !important;
+    border-radius: 24px !important;
+    margin: auto !important;
+    border: 1.5px solid var(--border-strong) !important;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
     -webkit-overflow-scrolling: touch;
+  }
+
+  /* Remove the tag/archive text box from all project showcase windows on mobile */
+  .modal-hero-badge {
+    display: none !important;
+  }
+
+  .modal-hero-overlay {
+    pointer-events: none;
   }
 
   .modal-hero-media {
@@ -6882,7 +6899,10 @@ button.nav-dropdown-trigger {
   }
 
   .about-lead {
-    font-size: clamp(1.3rem, 6.2vw, 1.6rem) !important;
+    font-size: clamp(1.05rem, 4vw, 1.25rem) !important;
+    text-align: center !important;
+    max-width: min(320px, 90vw) !important;
+    margin: 0.35rem auto 0.5rem !important;
   }
 
   .birthday-clock-cluster .clock-card:nth-child(1),
@@ -6897,8 +6917,10 @@ button.nav-dropdown-trigger {
   }
 
   .about-cta-wrap .nav-link-btn {
-    font-size: 0.72rem !important;
-    padding: 0.7rem 0.9rem !important;
+    font-size: clamp(0.52rem, 2.2vw, 0.62rem) !important;
+    padding: 0.58rem 0.85rem !important;
+    max-width: min(320px, 90vw) !important;
+    margin: 0 auto !important;
   }
 
   .radial-palette-widget.open .swatch-btn {
