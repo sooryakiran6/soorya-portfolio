@@ -1,4 +1,4 @@
-/**
+﻿/**
  * CREATIVE VISUAL COMMUNICATION PORTFOLIO ENGINE
  * Inspired by Rohith Manikkoth (2.5D Multi-Plane Parallax, Dot-Matrix, Neo-Brutalism)
  * & Spencer Gabor (Awwwards SOTD Bouncy Elastic Physics, Curved Carousel, Radial Themes)
@@ -92,7 +92,7 @@ function bindInteractiveActivation(element, label, onActivate, shouldSuppressCli
   if (!element.hasAttribute('role')) element.setAttribute('role', 'button');
   if (!element.hasAttribute('aria-haspopup')) element.setAttribute('aria-haspopup', 'dialog');
   if (label && !element.hasAttribute('aria-label')) {
-    element.setAttribute('aria-label', `${label} â€” Open case study`);
+    element.setAttribute('aria-label', `${label} — Open case study`);
   }
 
   element.addEventListener('click', (e) => {
@@ -622,7 +622,7 @@ function initCardDecks() {
       }
     });
 
-    const title = deck.querySelector('.deck-title')?.textContent.replace('â†’', '').trim();
+    const title = deck.querySelector('.deck-title')?.textContent.replace('→', '').trim();
     bindInteractiveActivation(deck, title, () => {
       playTactileClick();
       const projectId = deck.getAttribute('data-project-id');
@@ -856,7 +856,7 @@ const CASE_STUDIES = {
     plates: [
       {
         src: 'img/projects/walkkaro-case-study.png',
-        title: 'Complete Kozhikode Walkathon Project Board & Final Key Art (Ultra-Res 1420Ã—8861)',
+        title: 'Complete Kozhikode Walkathon Project Board & Final Key Art (Ultra-Res 1420 × 8861)',
         desc: 'Full-resolution master project board detailing: Design Process, Primary Brand Colors & Supporting Accent Colors, Reference Illustrations & Urban Moodboards (Mananchira Square, Kozhikode Beach, Kuttichira Mosque, Thikkodi Lighthouse, S.K. Pottekkatt statue, street food carts), Composition & Sketching variations, the 6-stage Vector Rendering Process, and the complete Final Key Art with official project narrative.'
       }
     ]
@@ -891,8 +891,8 @@ const CASE_STUDIES = {
     ]
   },
   'project-04': {
-    title: 'One Way Vision â€” Illustrated Graphic Panels',
-    category: 'Environmental Graphics â€¢ Spatial Mural â€¢ Large Format',
+    title: 'One Way Vision — Illustrated Graphic Panels',
+    category: 'Environmental Graphics • Spatial Mural • Large Format',
     client: 'National Institute of Fashion Technology (NIFT), Kannur',
     year: '2025',
     role: 'Head Illustrator & Large-Format Production Lead',
@@ -906,7 +906,7 @@ const CASE_STUDIES = {
     plates: [
       {
         src: 'img/projects/one-way-vision-case-study.png',
-        title: 'Complete One Way Vision Project Board (Ultra-Res 1420Ã—4919)',
+        title: 'Complete One Way Vision Project Board (Ultra-Res 1420 × 4919)',
         desc: 'Comprehensive project board covering: National Institute of Fashion Technology main entrance, 3 Illustrated Graffiti Panels (Panel 1: Kerala heritage & sewing machine elephant, Panel 2: Fashion art student portrait with circular amphitheatre hair, Panel 3: Hornbill scissors & tropical biodiversity), Ideation Process, and Final Installed Gate Photographs.'
       }
     ]
@@ -976,14 +976,14 @@ const CASE_STUDIES = {
     plates: [
       {
         src: 'img/projects/somewhere-between-us-case-study.png',
-        title: 'Complete Production & Directorial Master Board (Ultra-Res 1420Ã—12030)',
+        title: 'Complete Production & Directorial Master Board (Ultra-Res 1420 × 12030)',
         desc: 'Complete high-resolution master case study detailing the creative crew credits, looping screenplay analysis, minimal night recce locations, character profiles for Dhea & Varun, camera rigging on moving car, accident sequence pacing, micro-budget production, and 12 atmospheric widescreen keyframes.'
       }
     ]
   },
   'project-07': {
     title: 'Happylicious Styling Project',
-    category: 'Fashion Styling â€¢ Art Direction â€¢ Youth Culture',
+    category: 'Fashion Styling • Art Direction • Youth Culture',
     client: 'Editorial Fashion & Creative Styling',
     year: '2025',
     role: 'Fashion Stylist, Visual Concept Artist & Creative Director (Soorya Kiran)',
@@ -1010,7 +1010,7 @@ const CASE_STUDIES = {
     plates: [
       {
         src: 'img/projects/happylicious-case-study.png',
-        title: 'Complete Happylicious Concept & Styling Board (Ultra-Res 1920Ã—5400)',
+        title: 'Complete Happylicious Concept & Styling Board (Ultra-Res 1920 × 5400)',
         desc: 'Complete high-resolution master project board featuring floral border branding, the official Concept Board philosophy, and multi-angle photoshoot sets exploring Look 01 (tomato red knit + yellow plaid) and Look 02 (apricot cardigan + pink denim).'
       }
     ]
