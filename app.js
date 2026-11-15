@@ -240,19 +240,57 @@ function initStickerPhysics() {
       const moveY = mouseY * 45 * depth * amplitude + idleFloatY;
       const tilt = mouseX * 15 * depth + idleFloatRot;
 
-      sticker.style.transform = `translate3d(${moveX.toFixed(2)}px, ${moveY.toFixed(2)}px, ${(depth * 40).toFixed(1)}px) rotate(${(baseRot + tilt).toFixed(2)}deg)`;
+      const isPopped = sticker.classList.contains('is-popped');
+      const popExtraZ = isPopped ? (compactViewport ? 70 : 100) : 0;
+      const popExtraY = isPopped ? (compactViewport ? -8 : -14) : 0;
+      const popScale = isPopped ? (compactViewport ? 1.12 : 1.16) : 1;
+
+      sticker.style.transform = `translate3d(${moveX.toFixed(2)}px, ${(moveY + popExtraY).toFixed(2)}px, ${(depth * 40 + popExtraZ).toFixed(1)}px) rotate(${(baseRot + tilt).toFixed(2)}deg) scale(${popScale})`;
     });
 
-    // Dynamic Cartoon Eyes Tracking Mouse Cursor
+    // Dynamic Cartoon Eyes Tracking Mouse Cursor / Autonomous Gaze
     const eyeLayer = document.querySelector('.cartoon-eyes-container');
     if (eyeLayer) {
-      const eyeTrackingX = (mouseX * 5 * amplitude).toFixed(2);
-      const eyeTrackingY = (mouseY * 4 * amplitude).toFixed(2);
+      const isMobile = window.innerWidth <= 900;
+      const maxEyeShift = isMobile ? 0.6 : 1.4;
+      const eyeTrackingX = Math.max(-maxEyeShift, Math.min(maxEyeShift, mouseX * (isMobile ? 1.5 : 4) * amplitude)).toFixed(2);
+      const eyeTrackingY = Math.max(-maxEyeShift, Math.min(maxEyeShift, mouseY * (isMobile ? 1.2 : 3) * amplitude)).toFixed(2);
       eyeLayer.style.setProperty('--mouse-eye-x', `${eyeTrackingX}px`);
       eyeLayer.style.setProperty('--mouse-eye-y', `${eyeTrackingY}px`);
     }
 
     heroAnimId = requestAnimationFrame(updateStickers);
+  }
+
+  // Interactive Design & Art Direction Card: Click / Tap to Pop Up Above
+  const artDirCard = document.querySelector('.sticker-artdir-item');
+  if (artDirCard) {
+    artDirCard.setAttribute('role', 'button');
+    artDirCard.setAttribute('tabindex', '0');
+    artDirCard.setAttribute('aria-label', 'Design & Art Direction — Tap to pop up');
+
+    const handlePopToggle = (e) => {
+      e.stopPropagation();
+      const willBePopped = !artDirCard.classList.contains('is-popped');
+      artDirCard.classList.toggle('is-popped', willBePopped);
+      if (willBePopped && typeof playTactileClick === 'function') {
+        playTactileClick();
+      }
+    };
+
+    artDirCard.addEventListener('click', handlePopToggle);
+    artDirCard.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handlePopToggle(e);
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (artDirCard.classList.contains('is-popped') && !artDirCard.contains(e.target)) {
+        artDirCard.classList.remove('is-popped');
+      }
+    });
   }
 
   // Smart Visibility Observer: Pause hero sticker loop when scrolled out of view to preserve 60/120fps scrolling
