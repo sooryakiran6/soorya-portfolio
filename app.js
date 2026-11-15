@@ -1435,30 +1435,39 @@ function initGiantFooter() {
   const worksDropdown = document.getElementById('worksDropdown');
   const worksDropdownBtn = document.getElementById('worksDropdownBtn');
   if (worksDropdown && worksDropdownBtn) {
+    const closeDropdown = () => {
+      worksDropdown.classList.remove('is-open');
+      worksDropdownBtn.setAttribute('aria-expanded', 'false');
+    };
+
     worksDropdownBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       const isOpen = worksDropdown.classList.toggle('is-open');
       worksDropdownBtn.setAttribute('aria-expanded', String(isOpen));
+      if (typeof playTactileClick === 'function') playTactileClick();
     });
 
     document.querySelectorAll('.nav-dropdown-item').forEach((item) => {
       item.addEventListener('click', () => {
-        worksDropdown.classList.remove('is-open');
-        worksDropdownBtn.setAttribute('aria-expanded', 'false');
+        closeDropdown();
       });
     });
 
     document.addEventListener('click', (e) => {
       if (!worksDropdown.contains(e.target)) {
-        worksDropdown.classList.remove('is-open');
-        worksDropdownBtn.setAttribute('aria-expanded', 'false');
+        closeDropdown();
       }
     });
 
+    document.addEventListener('touchstart', (e) => {
+      if (!worksDropdown.contains(e.target)) {
+        closeDropdown();
+      }
+    }, { passive: true });
+
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && worksDropdown.classList.contains('is-open')) {
-        worksDropdown.classList.remove('is-open');
-        worksDropdownBtn.setAttribute('aria-expanded', 'false');
+        closeDropdown();
         worksDropdownBtn.focus();
       }
     });
@@ -1696,6 +1705,12 @@ function initSmartNav() {
       if (scrollDelta > 0) {
         // Scrolling downwards -> hide
         nav.classList.add('nav-hidden');
+        const worksDropdown = document.getElementById('worksDropdown');
+        const worksDropdownBtn = document.getElementById('worksDropdownBtn');
+        if (worksDropdown && worksDropdown.classList.contains('is-open')) {
+          worksDropdown.classList.remove('is-open');
+          if (worksDropdownBtn) worksDropdownBtn.setAttribute('aria-expanded', 'false');
+        }
       } else {
         // Scrolling upwards -> reveal
         nav.classList.remove('nav-hidden');
