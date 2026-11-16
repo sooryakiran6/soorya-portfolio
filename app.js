@@ -725,20 +725,34 @@ function initThemeEngine() {
   const savedTheme = validThemes.includes(storedTheme) ? storedTheme : 'void';
   setTheme(savedTheme, false);
 
-  toggleBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
+  let lastToggleTime = 0;
+
+  const toggleWidget = (e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    const now = Date.now();
+    if (now - lastToggleTime < 80) return;
+    lastToggleTime = now;
+
     const isOpen = widget.classList.toggle('open');
     toggleBtn.setAttribute('aria-expanded', String(isOpen));
     playWhooshSound();
-  });
+  };
 
-  // Close when clicking outside or pressing Escape
-  document.addEventListener('click', (e) => {
+  toggleBtn.addEventListener('click', toggleWidget);
+
+  // Close when clicking or tapping outside or pressing Escape
+  const closeIfOutside = (e) => {
     if (!widget.contains(e.target) && widget.classList.contains('open')) {
       widget.classList.remove('open');
       toggleBtn.setAttribute('aria-expanded', 'false');
     }
-  });
+  };
+
+  document.addEventListener('click', closeIfOutside);
+  document.addEventListener('touchstart', closeIfOutside, { passive: true });
 
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && widget.classList.contains('open')) {
@@ -749,15 +763,19 @@ function initThemeEngine() {
   });
 
   swatchBtns.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
+    const handleSwatch = (e) => {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
       const theme = btn.getAttribute('data-set-theme');
       if (theme) {
         setTheme(theme, true);
         widget.classList.remove('open');
         toggleBtn.setAttribute('aria-expanded', 'false');
       }
-    });
+    };
+    btn.addEventListener('click', handleSwatch);
   });
 }
 

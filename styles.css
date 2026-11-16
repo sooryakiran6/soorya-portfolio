@@ -4389,6 +4389,9 @@ button.nav-dropdown-trigger {
   display: grid;
   place-items: center;
   user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation !important;
+  -webkit-tap-highlight-color: transparent !important;
 }
 
 .radial-toggle-btn {
@@ -4403,7 +4406,11 @@ button.nav-dropdown-trigger {
   place-items: center;
   cursor: pointer;
   position: relative;
-  z-index: 10;
+  z-index: 100 !important;
+  touch-action: manipulation !important;
+  -webkit-tap-highlight-color: transparent !important;
+  user-select: none;
+  -webkit-user-select: none;
   transition: transform 0.6s var(--ease-elastic), box-shadow 0.3s ease;
 }
 
@@ -4417,27 +4424,41 @@ button.nav-dropdown-trigger {
 }
 
 .radial-toggle-btn svg {
+  grid-area: 1 / 1;
   width: 24px;
   height: 24px;
+  pointer-events: none !important;
   transition: transform 0.5s var(--ease-elastic), opacity 0.25s ease;
+}
+
+.radial-toggle-btn svg * {
+  pointer-events: none !important;
 }
 
 /* Default / Dark Looks (Void & Solar): Moon is visible, Sun is hidden */
 .radial-toggle-btn .theme-icon-sun {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none !important;
 }
 
 .radial-toggle-btn .theme-icon-moon {
-  display: block;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: none !important;
 }
 
 /* White and Orange Look (Cream Theme): Sun is visible, Moon is hidden */
 [data-theme="cream"] .radial-toggle-btn .theme-icon-sun {
-  display: block;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: none !important;
 }
 
 [data-theme="cream"] .radial-toggle-btn .theme-icon-moon {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none !important;
 }
 
 .radial-palette-widget.open .radial-toggle-btn svg {
@@ -4451,7 +4472,14 @@ button.nav-dropdown-trigger {
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none;
+  pointer-events: none !important;
+  visibility: hidden;
+  z-index: 50;
+  touch-action: manipulation !important;
+}
+
+.radial-palette-widget.open .palette-swatches-ring {
+  visibility: visible;
 }
 
 .swatch-btn {
@@ -4464,8 +4492,14 @@ button.nav-dropdown-trigger {
   border: 2px solid #ffffff;
   box-shadow: var(--shadow-md);
   cursor: pointer;
-  pointer-events: auto;
+  pointer-events: none !important;
+  visibility: hidden;
   opacity: 0;
+  z-index: 1;
+  touch-action: manipulation !important;
+  -webkit-tap-highlight-color: transparent !important;
+  user-select: none;
+  -webkit-user-select: none;
   transform: translate(0, 0) scale(0.2);
   transition: transform 0.5s var(--ease-elastic), opacity 0.3s ease;
   transition-delay: calc(var(--idx) * 0.04s);
@@ -4477,21 +4511,23 @@ button.nav-dropdown-trigger {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
 }
 
-.swatch-btn:hover {
-  transform: translate(var(--tx), var(--ty)) scale(1.22) !important;
-  box-shadow: var(--shadow-pop);
-  z-index: 20;
-}
-
-/* Trigonometric Polar Fan-out when open */
 .radial-palette-widget.open .swatch-btn {
   opacity: 1;
+  visibility: visible;
+  pointer-events: auto !important;
+  z-index: 60;
   /* Swatches fan out in a quarter-circle arc towards top-left */
   --angle: calc(var(--idx) * 35deg + 135deg);
   --dist: 90px;
   --tx: calc(cos(var(--angle)) * var(--dist));
   --ty: calc(sin(var(--angle)) * var(--dist));
   transform: translate(var(--tx), var(--ty)) scale(1);
+}
+
+.swatch-btn:hover {
+  transform: translate(var(--tx), var(--ty)) scale(1.22) !important;
+  box-shadow: var(--shadow-pop);
+  z-index: 70 !important;
 }
 
 /* Tooltip on hover */
