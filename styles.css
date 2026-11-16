@@ -644,9 +644,9 @@ body.loading-locked *::-webkit-scrollbar {
 /* Enlarged Animated GIF Logo Container */
 .loader-logo-wrap {
   position: relative;
-  width: clamp(175px, 22vw, 235px);
+  width: clamp(240px, 28vw, 320px);
   height: auto;
-  aspect-ratio: 1080 / 1440;
+  aspect-ratio: 1 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -659,9 +659,10 @@ body.loading-locked *::-webkit-scrollbar {
   object-fit: contain;
   display: block;
   mix-blend-mode: screen;
-  filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 35px rgba(255, 215, 0, 0.2));
+  filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.45)) drop-shadow(0 0 35px rgba(255, 215, 0, 0.22));
   user-select: none;
-  animation: loaderLogoEntrance 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  -webkit-user-select: none;
+  pointer-events: none;
 }
 
 /* Shimmer overlay hidden when native animated GIF is active */
@@ -2621,6 +2622,14 @@ button.nav-dropdown-trigger {
   object-fit: contain;
   pointer-events: none;
   z-index: 5;
+}
+
+/* iPad, Tablets & Touch Screens: Eliminate detached 3D flipping page artifact & WebKit projection bug */
+@media (max-width: 1366px), (hover: none) and (pointer: coarse) {
+  .notebook-pages-deck,
+  .notebook-spiral-overlay {
+    display: none !important;
+  }
 }
 
 /* Page flip staggered sequence */
