@@ -822,7 +822,8 @@ const CASE_STUDIES = {
     client: 'Independent Comic Publication',
     year: '2025',
     role: 'Comic Artist, Character Designer & Illustrator',
-    image: 'img/projects/akkarakkavu.png',
+    image: 'img/projects/akkarakkavu.jpg',
+    mobileImage: 'img/projects/akkarakkavu-mobile.jpg',
     badge: 'COMIC SERIES // CHAPTER ONE',
     summary: 'Set in the mystical landscapes of Kerala, Akkarakkavu is an illustrated continuous scroll story following young Kannan as he wanders deeper into a sacred grove. Guided by a supernatural fox, he is led into a world beyond the familiar—a tale exploring ancient legends and the supernatural charms that he begins to uncover within the mythical grove on the other side of an astral world.',
     challenge: 'Translating living Kerala folklore, twilight sacred grove (kaavu) rituals, and vernacular astral mysticism into an intimate, continuous-scroll graphic narrative with rich atmospheric depth and authentic rural childhood innocence.',
@@ -911,7 +912,8 @@ const CASE_STUDIES = {
     deliverables: ['Flagship Campaign Key Visual', 'Large-Format Event Backdrop & Billboards', 'Event T-Shirts, Bibs & Medals Assets', 'Social Media Launch Campaign Kit'],
     plates: [
       {
-        src: 'img/projects/walkkaro-case-study.png',
+        src: 'img/projects/walkkaro-case-study-opt.jpg',
+        mobileSrc: 'img/projects/walkkaro-case-study-mobile.jpg',
         title: 'Complete Kozhikode Walkathon Project Board & Final Key Art (Ultra-Res 1420 × 8861)',
         desc: 'Full-resolution master project board detailing: Design Process, Primary Brand Colors & Supporting Accent Colors, Reference Illustrations & Urban Moodboards (Mananchira Square, Kozhikode Beach, Kuttichira Mosque, Thikkodi Lighthouse, S.K. Pottekkatt statue, street food carts), Composition & Sketching variations, the 6-stage Vector Rendering Process, and the complete Final Key Art with official project narrative.'
       }
@@ -933,7 +935,8 @@ const CASE_STUDIES = {
     plates: [
       {
         type: 'image',
-        src: 'img/projects/drip-codex-case-study.png',
+        src: 'img/projects/drip-codex-case-study-opt.jpg',
+        mobileSrc: 'img/projects/drip-codex-case-study-mobile.jpg',
         title: 'Plate 01 // Complete Drip Codex Project Board (Ultra-Res 1420×7140)',
         desc: 'Crisp master project board covering: Target Ring Cover Art, Vinyl LP Record analog branding, 3D Book Mockups, and 7 interior spread layouts exploring Gen-Z street fashion vocabulary, thrift terminology, and subculture taxonomy.'
       },
@@ -961,7 +964,8 @@ const CASE_STUDIES = {
     deliverables: ['Large-Scale Architectural Vector Murals', 'Perforated One-Way Vision Film Spec', 'On-Site Gate Alignment & Installation', 'Campus Spatial Transformation Showcase'],
     plates: [
       {
-        src: 'img/projects/one-way-vision-case-study.png',
+        src: 'img/projects/one-way-vision-case-study-opt.jpg',
+        mobileSrc: 'img/projects/one-way-vision-case-study-mobile.jpg',
         title: 'Complete One Way Vision Project Board (Ultra-Res 1420 × 4919)',
         desc: 'Comprehensive project board covering: National Institute of Fashion Technology main entrance, 3 Illustrated Graffiti Panels (Panel 1: Kerala heritage & sewing machine elephant, Panel 2: Fashion art student portrait with circular amphitheatre hair, Panel 3: Hornbill scissors & tropical biodiversity), Ideation Process, and Final Installed Gate Photographs.'
       }
@@ -996,7 +1000,8 @@ const CASE_STUDIES = {
     },
     plates: [
       {
-        src: 'img/projects/puma-case-study.png',
+        src: 'img/projects/puma-case-study-opt.jpg',
+        mobileSrc: 'img/projects/puma-case-study-mobile.jpg',
         title: 'Complete Brand Visual Study Board (Ultra-Res 1420×5780)',
         desc: 'Complete high-resolution brand analysis board featuring About the Brand, Visual Language guidelines, Concept Note, Target Audience breakdown, "Chase the Fun" Key Message, 12-panel commercial storyboard, lifestyle moodboard, and automotive inspiration board.'
       }
@@ -1031,7 +1036,8 @@ const CASE_STUDIES = {
     },
     plates: [
       {
-        src: 'img/projects/somewhere-between-us-case-study.png',
+        src: 'img/projects/somewhere-between-us-case-study-opt.jpg',
+        mobileSrc: 'img/projects/somewhere-between-us-case-study-mobile.jpg',
         title: 'Complete Production & Directorial Master Board (Ultra-Res 1420 × 12030)',
         desc: 'Complete high-resolution master case study detailing the creative crew credits, looping screenplay analysis, minimal night recce locations, character profiles for Dhea & Varun, camera rigging on moving car, accident sequence pacing, micro-budget production, and 12 atmospheric widescreen keyframes.'
       }
@@ -1065,7 +1071,8 @@ const CASE_STUDIES = {
     },
     plates: [
       {
-        src: 'img/projects/happylicious-case-study.png',
+        src: 'img/projects/happylicious-case-study-opt.jpg',
+        mobileSrc: 'img/projects/happylicious-case-study-mobile.jpg',
         title: 'Complete Happylicious Concept & Styling Board (Ultra-Res 1920 × 5400)',
         desc: 'Complete high-resolution master project board featuring floral border branding, the official Concept Board philosophy, and multi-angle photoshoot sets exploring Look 01 (tomato red knit + yellow plaid) and Look 02 (apricot cardigan + pink denim).'
       }
@@ -1200,8 +1207,10 @@ function openProjectModal(projectId, triggerEl = null) {
   // Hero Image & Badge
   const heroImg = document.getElementById('modalHeroImg');
   if (heroImg && data.image) {
-    heroImg.src = data.image;
+    const isMobileViewport = window.innerWidth <= 768;
+    heroImg.src = (isMobileViewport && data.mobileImage) ? data.mobileImage : data.image;
     heroImg.alt = data.title;
+    heroImg.decoding = 'async';
     if (projectId === 'project-02') {
       heroImg.style.objectPosition = '50% 64%';
     } else {
@@ -1349,7 +1358,7 @@ function openProjectModal(projectId, triggerEl = null) {
             return `
               <div class="modal-series-panel-wrap">
                 <div class="modal-plate-img-wrap">
-                  <img src="${src}" alt="${title}" class="modal-plate-img" loading="lazy" />
+                  <img src="${src}" alt="${title}" class="modal-plate-img" loading="lazy" decoding="async" />
                 </div>
                 ${caption ? `
                 <div class="modal-series-panel-caption">
@@ -1377,7 +1386,10 @@ function openProjectModal(projectId, triggerEl = null) {
         } else {
           plateEl.innerHTML = `
             <div class="modal-plate-img-wrap">
-              <img src="${plate.src}" alt="${plate.title || 'Project Plate'}" class="modal-plate-img" loading="lazy" />
+              <picture>
+                ${plate.mobileSrc ? `<source media="(max-width: 768px)" srcset="${plate.mobileSrc}">` : ''}
+                <img src="${plate.src}" alt="${plate.title || 'Project Plate'}" class="modal-plate-img" loading="lazy" decoding="async" />
+              </picture>
             </div>
           `;
         }

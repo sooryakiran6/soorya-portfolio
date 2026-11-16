@@ -1051,7 +1051,7 @@ body.loading-locked *::-webkit-scrollbar {
   will-change: transform;
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (hover: hover) and (pointer: fine) and (min-width: 769px) {
   .custom-cursor {
     display: block;
   }
@@ -6768,41 +6768,41 @@ button.nav-dropdown-trigger {
   }
 
   .hero-section {
-    padding-top: calc(9.5rem + env(safe-area-inset-top));
-    padding-bottom: 2.5rem;
+    padding-top: calc(6.0rem + env(safe-area-inset-top));
+    padding-bottom: 2rem;
   }
 
-  /* Proportionally tighten floating hero cluster so all shapes remain visible inside phone width */
+  /* Proportionally enlarge floating hero cluster to fill negative space gracefully */
   .sticker-stage-container {
-    height: clamp(330px, 86vw, 410px);
-    margin-bottom: clamp(2rem, 5vw, 2.5rem);
+    height: clamp(390px, 104vw, 470px);
+    margin-bottom: clamp(1rem, 2.8vw, 1.6rem);
   }
 
   .sticker-techring-item {
-    width: clamp(290px, 76vw, 350px);
-    margin-left: calc(clamp(290px, 76vw, 350px) * -0.5);
-    margin-top: calc(clamp(290px, 76vw, 350px) * -0.5);
+    width: clamp(340px, 92vw, 420px);
+    margin-left: calc(clamp(340px, 92vw, 420px) * -0.5);
+    margin-top: calc(clamp(340px, 92vw, 420px) * -0.5);
   }
 
   .sticker-1.sticker-tv-item {
-    width: clamp(126px, 33vw, 154px);
-    margin-left: calc(clamp(126px, 33vw, 154px) * -0.5);
-    margin-top: calc(clamp(126px, 33vw, 154px) * -0.5);
+    width: clamp(158px, 41.5vw, 192px);
+    margin-left: calc(clamp(158px, 41.5vw, 192px) * -0.5);
+    margin-top: calc(clamp(158px, 41.5vw, 192px) * -0.5);
   }
 
   /* 12:30 Top-Right Arc: ON AIR Lightbox */
   .sticker-7.sticker-onair-item {
-    width: clamp(66px, 17vw, 84px);
-    margin-left: calc(clamp(66px, 17vw, 84px) * -0.5 + clamp(10px, 2.5vw, 18px));
-    margin-top: calc(clamp(126px, 33vw, 154px) * -0.5 - clamp(34px, 8.5vw, 44px));
+    width: clamp(74px, 19vw, 92px);
+    margin-left: calc(clamp(74px, 19vw, 92px) * -0.5 + clamp(12px, 3vw, 20px));
+    margin-top: calc(clamp(158px, 41.5vw, 192px) * -0.5 - clamp(42px, 10.5vw, 54px));
     z-index: 5;
   }
 
   /* 1:30 Top-Right Arc: Clapper Board */
   .sticker-3.sticker-clapper-item {
-    width: clamp(46px, 12vw, 60px);
-    margin-left: calc(clamp(126px, 33vw, 154px) * 0.5 + clamp(0px, 0.4vw, 6px));
-    margin-top: calc(clamp(126px, 33vw, 154px) * -0.5 - clamp(22px, 5.5vw, 30px));
+    width: clamp(52px, 13.5vw, 68px);
+    margin-left: calc(clamp(158px, 41.5vw, 192px) * 0.5 + clamp(2px, 0.8vw, 8px));
+    margin-top: calc(clamp(158px, 41.5vw, 192px) * -0.5 - clamp(26px, 6.5vw, 36px));
     z-index: 4;
   }
 
@@ -6820,40 +6820,40 @@ button.nav-dropdown-trigger {
 
   /* 3:00 Mid-Right: Notebook (Scaled & Positioned Nicely Between Clapper & Popcorn) */
   .sticker-9.sticker-notebook-item {
-    width: clamp(34px, 8.8vw, 44px);
-    margin-left: calc(clamp(126px, 33vw, 154px) * 0.5 + clamp(14px, 3.8vw, 24px));
-    margin-top: calc(clamp(126px, 33vw, 154px) * -0.5 + clamp(26px, 6.8vw, 42px));
+    width: clamp(40px, 10.2vw, 52px);
+    margin-left: calc(clamp(158px, 41.5vw, 192px) * 0.5 + clamp(16px, 4.2vw, 28px));
+    margin-top: calc(clamp(158px, 41.5vw, 192px) * -0.5 + clamp(32px, 8.2vw, 50px));
     z-index: 5;
   }
 
   /* 4:30 Bottom-Right: Popcorn */
   .sticker-5.sticker-popcorn-item {
-    width: clamp(45px, 12vw, 58px);
-    margin-left: calc(clamp(126px, 33vw, 154px) * 0.5 + clamp(8px, 2.2vw, 16px));
-    margin-top: calc(clamp(126px, 33vw, 154px) * 0.5 - clamp(20px, 5.2vw, 28px));
+    width: clamp(52px, 13.5vw, 66px);
+    margin-left: calc(clamp(158px, 41.5vw, 192px) * 0.5 + clamp(10px, 2.6vw, 20px));
+    margin-top: calc(clamp(158px, 41.5vw, 192px) * 0.5 - clamp(24px, 6vw, 34px));
     z-index: 6;
   }
 
   /* 5:30 Bottom-Right: Bomb */
   .sticker-8.sticker-bomb-item {
-    width: clamp(42px, 11vw, 54px);
-    margin-left: calc(clamp(42px, 11vw, 54px) * -0.5 + clamp(28px, 7vw, 40px));
-    margin-top: calc(clamp(126px, 33vw, 154px) * 0.5 + clamp(6px, 1.8vw, 14px));
+    width: clamp(48px, 12.5vw, 62px);
+    margin-left: calc(clamp(48px, 12.5vw, 62px) * -0.5 + clamp(34px, 8.5vw, 46px));
+    margin-top: calc(clamp(158px, 41.5vw, 192px) * 0.5 + clamp(10px, 2.6vw, 20px));
     z-index: 5;
   }
 
   /* 7:30 Bottom-Left Arc: Cassette */
   .sticker-4.sticker-cassette-item {
-    width: clamp(66px, 17vw, 86px);
-    margin-left: calc(clamp(126px, 33vw, 154px) * -0.5 - clamp(18px, 4.5vw, 28px));
-    margin-top: calc(clamp(126px, 33vw, 154px) * 0.5 - clamp(6px, 1.8vw, 12px));
+    width: clamp(76px, 19.5vw, 98px);
+    margin-left: calc(clamp(158px, 41.5vw, 192px) * -0.5 - clamp(22px, 5.6vw, 34px));
+    margin-top: calc(clamp(158px, 41.5vw, 192px) * 0.5 - clamp(6px, 1.8vw, 12px));
     z-index: 6;
   }
 
   /* 9:00 Mid-Left: Design & Art Direction (Unobstructed, High Legibility, Framed Nicely Beside TV) */
   .sticker-2.sticker-artdir-item {
-    margin-left: calc(clamp(126px, 33vw, 154px) * -0.5 - clamp(52px, 13.5vw, 70px));
-    margin-top: calc(clamp(126px, 33vw, 154px) * -0.5 + clamp(36px, 9.5vw, 48px));
+    margin-left: calc(clamp(158px, 41.5vw, 192px) * -0.5 - clamp(68px, 17.5vw, 90px));
+    margin-top: calc(clamp(158px, 41.5vw, 192px) * -0.5 + clamp(42px, 11vw, 56px));
     z-index: 8;
     cursor: pointer !important;
     pointer-events: auto !important;
@@ -6861,7 +6861,7 @@ button.nav-dropdown-trigger {
   }
 
   .sticker-2 .artdir-text-wrap {
-    padding: 0.34rem 0.64rem;
+    padding: 0.38rem 0.72rem;
     border-radius: var(--radius-sm);
     gap: 0.12rem;
     background: rgba(8, 16, 11, 0.94) !important;
@@ -6886,7 +6886,7 @@ button.nav-dropdown-trigger {
   }
 
   .sticker-2 .artdir-line {
-    font-size: clamp(0.66rem, 2vw, 0.75rem);
+    font-size: clamp(0.70rem, 2.1vw, 0.82rem);
     line-height: 1.05;
     letter-spacing: 0.01em;
     white-space: nowrap;
@@ -6894,18 +6894,18 @@ button.nav-dropdown-trigger {
 
   /* 10:30 Top-Left: Vinyl Disc (Close to TV) */
   .sticker-6.sticker-disc-item {
-    width: clamp(40px, 10.5vw, 50px);
-    margin-left: calc(clamp(126px, 33vw, 154px) * -0.5 - clamp(16px, 4vw, 24px));
-    margin-top: calc(clamp(126px, 33vw, 154px) * -0.5 - clamp(10px, 2.5vw, 16px));
+    width: clamp(48px, 12vw, 60px);
+    margin-left: calc(clamp(158px, 41.5vw, 192px) * -0.5 - clamp(18px, 4.6vw, 28px));
+    margin-top: calc(clamp(158px, 41.5vw, 192px) * -0.5 - clamp(14px, 3.5vw, 22px));
     z-index: 4;
   }
 
   .music-note {
-    font-size: clamp(1rem, 2.6vw, 1.4rem);
+    font-size: clamp(1.1rem, 2.8vw, 1.5rem);
   }
 
   .popcorn-drop {
-    width: clamp(12px, 3.2vw, 18px);
+    width: clamp(14px, 3.6vw, 20px);
   }
 
   .curved-carousel-track {
@@ -7105,7 +7105,7 @@ button.nav-dropdown-trigger {
   }
 
   .hero-section {
-    padding-top: calc(9.85rem + env(safe-area-inset-top));
+    padding-top: calc(5.8rem + env(safe-area-inset-top));
   }
 
   .avatar-frame {
