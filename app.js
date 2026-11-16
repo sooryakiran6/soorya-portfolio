@@ -51,8 +51,8 @@ function initSitePreloader() {
   document.documentElement.classList.add('loading-locked');
   document.body.classList.add('loading-locked');
 
-  // Automatic dismiss timer aligned to complete risograph logo animation cycle (~2.3s)
-  autoTimer = setTimeout(dismissLoader, 2300);
+  // Automatic dismiss timer reduced to 2.2s for faster, snappier site entry
+  autoTimer = setTimeout(dismissLoader, 2200);
 
   // Fast skip: click/tap anywhere or press Escape / Space / Enter
   loader.addEventListener('click', () => {
@@ -75,7 +75,7 @@ function initSitePreloader() {
     loader.classList.remove('dismissed');
     document.documentElement.classList.add('loading-locked');
     document.body.classList.add('loading-locked');
-    autoTimer = setTimeout(dismissLoader, 3800);
+    autoTimer = setTimeout(dismissLoader, 2200);
   };
 }
 
