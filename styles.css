@@ -572,11 +572,7 @@ body.loading-locked *::-webkit-scrollbar {
   position: fixed;
   inset: 0;
   z-index: 999999;
-  background-color: #0b0a09 !important;
-  background-image: url('img/loader-bg.jpg') !important;
-  background-repeat: repeat !important;
-  background-position: center center !important;
-  background-size: 423px 237px !important;
+  background: radial-gradient(circle at center, #130d1c 0%, #08060a 65%, #040305 100%) !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -603,14 +599,13 @@ body.loading-locked *::-webkit-scrollbar {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(11, 10, 9, 0.15) 0%, rgba(11, 10, 9, 0.8) 100%);
+  background: radial-gradient(circle at center, transparent 35%, rgba(4, 3, 5, 0.75) 100%);
   pointer-events: none;
 }
 
 [data-theme="cream"] .site-loader,
 [data-theme="solar"] .site-loader {
-  background-color: #0b0a09 !important;
-  background-image: url('img/loader-bg.jpg') !important;
+  background: radial-gradient(circle at center, #130d1c 0%, #08060a 65%, #040305 100%) !important;
 }
 
 .site-loader.dismissed {
@@ -636,12 +631,12 @@ body.loading-locked *::-webkit-scrollbar {
   width: clamp(220px, 26vw, 290px);
   height: clamp(220px, 26vw, 290px);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(233, 196, 106, 0.26) 0%, rgba(204, 255, 0, 0.1) 45%, transparent 70%);
-  animation: haloPulse 3s ease-in-out infinite alternate;
+  background: radial-gradient(circle, rgba(233, 196, 106, 0.22) 0%, rgba(204, 255, 0, 0.08) 45%, transparent 70%);
+  animation: none !important;
   pointer-events: none;
 }
 
-/* Enlarged Animated GIF Logo Container */
+/* Clean Animated GIF Logo Container - Stationary and Centered, no extra float/tilt */
 .loader-logo-wrap {
   position: relative;
   width: clamp(240px, 28vw, 320px);
@@ -650,7 +645,8 @@ body.loading-locked *::-webkit-scrollbar {
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: logoFloat 3.4s ease-in-out infinite alternate;
+  animation: none !important;
+  transform: none !important;
 }
 
 .loader-logo-img {
@@ -2452,17 +2448,10 @@ button.nav-dropdown-trigger {
   filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.48));
 }
 
-/* 3D Flipping Sketchbook Pages Deck */
-.notebook-pages-deck {
-  position: absolute;
-  left: 23%;
-  top: 11.2%;
-  width: 65%;
-  height: 74.8%;
-  perspective: 750px;
-  transform-style: preserve-3d;
-  pointer-events: none;
-  z-index: 3;
+/* 3D Flipping Sketchbook Pages Deck - disabled globally to prevent detached page artifacts across all devices */
+.notebook-pages-deck,
+.notebook-spiral-overlay {
+  display: none !important;
 }
 
 .notebook-page {
@@ -6777,41 +6766,45 @@ button.nav-dropdown-trigger {
   }
 
   .hero-section {
-    padding-top: calc(6.0rem + env(safe-area-inset-top));
-    padding-bottom: 2rem;
+    padding-top: calc(4.8rem + env(safe-area-inset-top));
+    padding-bottom: 1.5rem;
+  }
+
+  .hero-section .container {
+    padding-inline: 0.4rem !important;
   }
 
   /* Proportionally enlarge floating hero cluster to fill negative space gracefully */
   .sticker-stage-container {
-    height: clamp(390px, 104vw, 470px);
-    margin-bottom: clamp(1rem, 2.8vw, 1.6rem);
+    height: clamp(430px, 114vw, 520px);
+    margin-bottom: clamp(0.8rem, 2.2vw, 1.4rem);
   }
 
   .sticker-techring-item {
-    width: clamp(340px, 92vw, 420px);
-    margin-left: calc(clamp(340px, 92vw, 420px) * -0.5);
-    margin-top: calc(clamp(340px, 92vw, 420px) * -0.5);
+    width: clamp(330px, 88vw, 390px);
+    margin-left: calc(clamp(330px, 88vw, 390px) * -0.5);
+    margin-top: calc(clamp(330px, 88vw, 390px) * -0.5);
   }
 
   .sticker-1.sticker-tv-item {
-    width: clamp(158px, 41.5vw, 192px);
-    margin-left: calc(clamp(158px, 41.5vw, 192px) * -0.5);
-    margin-top: calc(clamp(158px, 41.5vw, 192px) * -0.5);
+    width: clamp(148px, 38vw, 176px);
+    margin-left: calc(clamp(148px, 38vw, 176px) * -0.5);
+    margin-top: calc(clamp(148px, 38vw, 176px) * -0.5);
   }
 
-  /* 12:30 Top-Right Arc: ON AIR Lightbox */
+  /* 12:30 Top-Right Arc: ON AIR Lightbox (Expands Upwards towards Nav) */
   .sticker-7.sticker-onair-item {
-    width: clamp(74px, 19vw, 92px);
-    margin-left: calc(clamp(74px, 19vw, 92px) * -0.5 + clamp(12px, 3vw, 20px));
-    margin-top: calc(clamp(158px, 41.5vw, 192px) * -0.5 - clamp(42px, 10.5vw, 54px));
+    width: clamp(72px, 18.5vw, 88px);
+    margin-left: calc(clamp(72px, 18.5vw, 88px) * -0.5 + clamp(10px, 2.6vw, 18px));
+    margin-top: calc(clamp(148px, 38vw, 176px) * -0.5 - clamp(48px, 12vw, 62px));
     z-index: 5;
   }
 
-  /* 1:30 Top-Right Arc: Clapper Board */
+  /* 1:30 Top-Right Arc: Clapper Board (Expands Upwards and Outwards) */
   .sticker-3.sticker-clapper-item {
-    width: clamp(52px, 13.5vw, 68px);
-    margin-left: calc(clamp(158px, 41.5vw, 192px) * 0.5 + clamp(2px, 0.8vw, 8px));
-    margin-top: calc(clamp(158px, 41.5vw, 192px) * -0.5 - clamp(26px, 6.5vw, 36px));
+    width: clamp(48px, 12vw, 60px);
+    margin-left: calc(clamp(148px, 38vw, 176px) * 0.5 - clamp(2px, 0.5vw, 6px));
+    margin-top: calc(clamp(148px, 38vw, 176px) * -0.5 - clamp(34px, 8.8vw, 44px));
     z-index: 4;
   }
 
@@ -6827,42 +6820,42 @@ button.nav-dropdown-trigger {
     will-change: transform !important;
   }
 
-  /* 3:00 Mid-Right: Notebook (Scaled & Positioned Nicely Between Clapper & Popcorn) */
+  /* 3:00 Mid-Right: Notebook (Expands Outwards to Right Margin) */
   .sticker-9.sticker-notebook-item {
-    width: clamp(40px, 10.2vw, 52px);
-    margin-left: calc(clamp(158px, 41.5vw, 192px) * 0.5 + clamp(16px, 4.2vw, 28px));
-    margin-top: calc(clamp(158px, 41.5vw, 192px) * -0.5 + clamp(32px, 8.2vw, 50px));
+    width: clamp(38px, 9.8vw, 48px);
+    margin-left: calc(clamp(148px, 38vw, 176px) * 0.5 + clamp(6px, 1.8vw, 14px));
+    margin-top: calc(clamp(148px, 38vw, 176px) * -0.5 + clamp(34px, 8.8vw, 48px));
     z-index: 5;
   }
 
-  /* 4:30 Bottom-Right: Popcorn */
+  /* 4:30 Bottom-Right: Popcorn (Expands Down and Right) */
   .sticker-5.sticker-popcorn-item {
-    width: clamp(52px, 13.5vw, 66px);
-    margin-left: calc(clamp(158px, 41.5vw, 192px) * 0.5 + clamp(10px, 2.6vw, 20px));
-    margin-top: calc(clamp(158px, 41.5vw, 192px) * 0.5 - clamp(24px, 6vw, 34px));
+    width: clamp(48px, 12.2vw, 60px);
+    margin-left: calc(clamp(148px, 38vw, 176px) * 0.5 - clamp(2px, 0.6vw, 6px));
+    margin-top: calc(clamp(148px, 38vw, 176px) * 0.5 - clamp(14px, 3.5vw, 22px));
     z-index: 6;
   }
 
-  /* 5:30 Bottom-Right: Bomb */
+  /* 5:30 Bottom-Right: Bomb (Expands Downwards towards OPEN 24/7) */
   .sticker-8.sticker-bomb-item {
-    width: clamp(48px, 12.5vw, 62px);
-    margin-left: calc(clamp(48px, 12.5vw, 62px) * -0.5 + clamp(34px, 8.5vw, 46px));
-    margin-top: calc(clamp(158px, 41.5vw, 192px) * 0.5 + clamp(10px, 2.6vw, 20px));
+    width: clamp(48px, 12.2vw, 60px);
+    margin-left: calc(clamp(48px, 12.2vw, 60px) * -0.5 + clamp(34px, 8.8vw, 46px));
+    margin-top: calc(clamp(148px, 38vw, 176px) * 0.5 + clamp(18px, 4.8vw, 28px));
     z-index: 5;
   }
 
-  /* 7:30 Bottom-Left Arc: Cassette */
+  /* 7:30 Bottom-Left Arc: Cassette (Expands Downwards and Leftwards) */
   .sticker-4.sticker-cassette-item {
-    width: clamp(76px, 19.5vw, 98px);
-    margin-left: calc(clamp(158px, 41.5vw, 192px) * -0.5 - clamp(22px, 5.6vw, 34px));
-    margin-top: calc(clamp(158px, 41.5vw, 192px) * 0.5 - clamp(6px, 1.8vw, 12px));
+    width: clamp(74px, 19vw, 94px);
+    margin-left: calc(clamp(148px, 38vw, 176px) * -0.5 - clamp(22px, 5.8vw, 32px));
+    margin-top: calc(clamp(148px, 38vw, 176px) * 0.5 + clamp(8px, 2vw, 16px));
     z-index: 6;
   }
 
-  /* 9:00 Mid-Left: Design & Art Direction (Unobstructed, High Legibility, Framed Nicely Beside TV) */
+  /* 9:00 Mid-Left: Design & Art Direction (Expands Outwards to Left Margin) */
   .sticker-2.sticker-artdir-item {
-    margin-left: calc(clamp(158px, 41.5vw, 192px) * -0.5 - clamp(68px, 17.5vw, 90px));
-    margin-top: calc(clamp(158px, 41.5vw, 192px) * -0.5 + clamp(42px, 11vw, 56px));
+    margin-left: calc(clamp(148px, 38vw, 176px) * -0.5 - clamp(72px, 18.5vw, 94px));
+    margin-top: calc(clamp(148px, 38vw, 176px) * -0.5 + clamp(42px, 11vw, 56px));
     z-index: 8;
     cursor: pointer !important;
     pointer-events: auto !important;
@@ -6901,11 +6894,11 @@ button.nav-dropdown-trigger {
     white-space: nowrap;
   }
 
-  /* 10:30 Top-Left: Vinyl Disc (Close to TV) */
+  /* 10:30 Top-Left: Vinyl Disc (Expands Up and Left) */
   .sticker-6.sticker-disc-item {
-    width: clamp(48px, 12vw, 60px);
-    margin-left: calc(clamp(158px, 41.5vw, 192px) * -0.5 - clamp(18px, 4.6vw, 28px));
-    margin-top: calc(clamp(158px, 41.5vw, 192px) * -0.5 - clamp(14px, 3.5vw, 22px));
+    width: clamp(50px, 12.8vw, 62px);
+    margin-left: calc(clamp(152px, 39vw, 182px) * -0.5 - clamp(24px, 6vw, 34px));
+    margin-top: calc(clamp(152px, 39vw, 182px) * -0.5 - clamp(20px, 5vw, 28px));
     z-index: 4;
   }
 

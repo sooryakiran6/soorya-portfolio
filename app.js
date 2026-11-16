@@ -51,8 +51,8 @@ function initSitePreloader() {
   document.documentElement.classList.add('loading-locked');
   document.body.classList.add('loading-locked');
 
-  // Automatic dismiss timer aligned to complete risograph logo animation cycle (~3.8s)
-  autoTimer = setTimeout(dismissLoader, 3800);
+  // Automatic dismiss timer aligned to complete risograph logo animation cycle (~2.3s)
+  autoTimer = setTimeout(dismissLoader, 2300);
 
   // Fast skip: click/tap anywhere or press Escape / Space / Enter
   loader.addEventListener('click', () => {
